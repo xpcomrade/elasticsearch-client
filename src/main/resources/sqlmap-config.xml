@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>    
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="jdbc.properties"/>
+	<settings>
+		<setting name="lazyLoadingEnabled" value="false" />
+		<!--<setting name="cacheEnabled" value="true"/>-->
+	</settings>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"/>
+			<dataSource type="POOLED">
+				<property name="driver" value="${JDBC.Driver.Userlog}" />
+				<property name="url" value="${JDBC.ConnectionURL.Userlog}" />
+				<property name="username" value="${JDBC.Username.Userlog}" />
+				<property name="password" value="${JDBC.Password.Userlog}" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<!-- mapper.xml文件 -->
+	<mappers>
+		<mapper resource="LogMapper.xml"/>
+	</mappers>
+</configuration>
