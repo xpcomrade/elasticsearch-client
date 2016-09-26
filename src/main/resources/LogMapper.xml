@@ -4,6 +4,6 @@
 
 
     <select id="queryAllData" resultType="Map">
-        SELECT * FROM hxjb_user_log ORDER BY  create_time DESC  limit 100
+        SELECT * FROM hxjb_user_log ORDER BY  create_time DESC  limit 100000
     </select>
 </mapper>

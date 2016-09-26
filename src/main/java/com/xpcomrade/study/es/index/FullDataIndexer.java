@@ -20,14 +20,15 @@ public class FullDataIndexer implements Indexer {
     @Override
     public void index() {
 
+        long startime = System.currentTimeMillis();
         List<Map<String, Object>> resultList = DataLoader.queryAllData();
-
         if (null == resultList || 0 == resultList.size()) {
             logger.error("No data can be indexed.");
             return;
         }
 
         IndexWriter.submit(resultList);
+        System.out.println("索引完毕，耗时:" + (System.currentTimeMillis() - startime) + "毫秒");
     }
 
     public static void main(String[] args) {

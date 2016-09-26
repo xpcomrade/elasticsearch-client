@@ -46,6 +46,7 @@ public class DeleteAPI extends AbstractBaseTest {
                 .setSource(deletebyquery)
                 .execute()
                 .actionGet();
+
     }
 
 

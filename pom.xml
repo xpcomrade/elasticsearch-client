@@ -68,6 +68,11 @@
             <version>${logback-classic.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.elasticsearch.client</groupId>
+            <artifactId>rest</artifactId>
+            <version>5.0.0-beta1</version>
+        </dependency>
 
     </dependencies>
 
