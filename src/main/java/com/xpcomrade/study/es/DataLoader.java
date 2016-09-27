@@ -1,6 +1,6 @@
 package com.xpcomrade.study.es;
 
-import org.apache.ibatis.session.SqlSession;
+import com.xpcomrade.study.ds.DBUtils;
 
 import java.util.List;
 import java.util.Map;
@@ -21,15 +21,8 @@ public class DataLoader {
      * @return
      */
     public static List<Map<String, Object>> queryAllData() {
-        SqlSession sqlSession = DSConnection.openSession();
-        List<Map<String, Object>> dataList = null;
-        try {
-            dataList = sqlSession.selectList("LogMapper.queryAllData");
-
-            handlerData(sqlSession, dataList);
-        } finally {
-            DSConnection.closeSession(sqlSession);
-        }
+        List<Map<String, Object>> dataList = DBUtils.selectList("LogMapper.queryAllData");
+        handlerData(dataList);
 
         return dataList;
     }
@@ -38,7 +31,7 @@ public class DataLoader {
      * 数据处理
      * @param dataList
      */
-    private static void handlerData(SqlSession sqlSession, List<Map<String, Object>> dataList) {
+    private static void handlerData(List<Map<String, Object>> dataList) {
         if (dataList == null || dataList.size() <= 0) {
             return;
         }
