@@ -1,7 +1,9 @@
 package com.xpcomrade.study.es;
 
 import com.xpcomrade.study.ds.DBUtils;
+import com.xpcomrade.study.ds.PageList;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,6 +29,14 @@ public class DataLoader {
         return dataList;
     }
 
+    public static PageList<Map<String, Object>> queryPage (int topage, int pageSize) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        PageList<Map<String, Object>> pageList = DBUtils.queryForPageList("LogMapper.queryByPage", param, topage, pageSize);
+        handlerData(pageList.getRecords());
+
+        return pageList;
+    }
+
     /**
      * 数据处理
      * @param dataList
@@ -37,7 +47,7 @@ public class DataLoader {
         }
 
         for (Map<String, Object> map : dataList) {
-
+            map.put("domain", "http://api.51jiabo.com");
         }
     }
 }

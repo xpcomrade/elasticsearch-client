@@ -6,4 +6,17 @@
     <select id="queryAllData" resultType="Map">
         SELECT * FROM hxjb_user_log ORDER BY  create_time DESC  limit 100000
     </select>
+
+    <select id="queryByPage" parameterType="Map" resultType="Map">
+        SELECT * FROM hxjb_user_log
+        WHERE  id <![CDATA[ <= ]]> 8185352
+        ORDER BY  create_time DESC
+        limit #{offset},#{pagesize}
+    </select>
+
+    <select id="queryByPageCount" parameterType="Map" resultType="Integer">
+        SELECT COUNT(*) FROM hxjb_user_log
+        WHERE  id <![CDATA[ <= ]]> 8185352
+    </select>
+
 </mapper>
