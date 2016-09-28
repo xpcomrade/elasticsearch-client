@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -22,25 +21,26 @@ public class FullDataIndexer implements Indexer {
     @Override
     public void index() {
         long startime = System.currentTimeMillis();
-        System.out.println("索引开始:" + new Date().toLocaleString());
+        logger.info("索引开始:{}", new Date().toLocaleString());
         PageList<Map<String, Object>> pageList = DataLoader.queryPage(1, 10000);
         if (null == pageList || 0 == pageList.getTotalCount()) {
-            logger.error("No data can be indexed.");
+            logger.error("DataSet empty");
             return;
         }
         int totalPage = pageList.getTotalPage();
         System.out.println("总共:" + totalPage + "页，条数:" + pageList.getTotalCount());
         int topage = 1;
         while (totalPage >0) {
-            pageList = DataLoader.queryPage(topage, 10000);
+            if (topage != 1) {
+                pageList = DataLoader.queryPage(topage, 10000);
+            }
             IndexWriter.submit(pageList.getRecords());
-            System.out.println("第:" + topage + "页，索引完毕！");
+            logger.info("第:{}页，索引完毕！", topage);
             topage++;
             totalPage--;
         }
 
-
-        System.out.println("索引完毕，耗时:" + (System.currentTimeMillis() - startime) + "毫秒");
+        logger.info("索引完毕，耗时:{}毫秒", (System.currentTimeMillis() - startime));
     }
 
     public static void main(String[] args) {
