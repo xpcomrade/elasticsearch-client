@@ -37,6 +37,20 @@ public class DataLoader {
         return pageList;
     }
 
+    public static Integer queryCount() {
+        return DBUtils.selectOne("LogMapper.queryByPageCount",null);
+    }
+
+    public static List<Map<String, Object>> queryList(int offset, int pageSize) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("offset", offset);
+        param.put("pagesize", pageSize);
+        List<Map<String, Object>> resultList = DBUtils.selectList("LogMapper.queryByPage", param);
+        handlerData(resultList);
+
+        return resultList;
+    }
+
     /**
      * 数据处理
      * @param dataList

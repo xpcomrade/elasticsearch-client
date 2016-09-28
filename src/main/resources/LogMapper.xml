@@ -9,14 +9,16 @@
 
     <select id="queryByPage" parameterType="Map" resultType="Map">
         SELECT * FROM hxjb_user_log
-        WHERE  id <![CDATA[ <= ]]> 8185352
-        ORDER BY  create_time DESC
+        WHERE  create_time <![CDATA[ <= ]]> '2016-09-28 14:20:10'
         limit #{offset},#{pagesize}
     </select>
 
-    <select id="queryByPageCount" parameterType="Map" resultType="Integer">
+    <select id="queryByPageCount" parameterType="Map"  resultType="Integer">
         SELECT COUNT(*) FROM hxjb_user_log
-        WHERE  id <![CDATA[ <= ]]> 8185352
+        WHERE  create_time <![CDATA[ <= ]]> '2016-09-28 14:20:10'
     </select>
+
+
+
 
 </mapper>

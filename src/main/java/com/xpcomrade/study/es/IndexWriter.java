@@ -22,7 +22,7 @@ public final class IndexWriter {
 
     private static TransportClient client;
 
-    static final String index = "hxjbapilog";
+    static final String index = "hmuserlog_20160928";
     static final String type = "apilog";
 
     private IndexWriter(){
