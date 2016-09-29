@@ -12,6 +12,7 @@ public class CreateIndex extends AbstractBaseTest {
 
     @Test
     public void createIndex () {
-        ESClientUtil.createIndex(client, "hmuserlog_20160928");
+        /*ESClientUtil.createIndex(client, "hmuserlog_20160928");*/
+        ESClientUtil.createIndex(client, "hxjblog");
     }
 }

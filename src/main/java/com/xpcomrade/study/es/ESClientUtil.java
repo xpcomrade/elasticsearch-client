@@ -33,9 +33,9 @@ public class ESClientUtil {
         CreateIndexRequest cIndexRequest = new CreateIndexRequest(indexName);
         CreateIndexResponse cIndexResponse = client.admin().indices().create(cIndexRequest).actionGet();
         if (cIndexResponse.isAcknowledged()) {
-            logger.info("Create index [{}] successfully！", indexName);
+            logger.info("Create INDEX [{}] successfully！", indexName);
         } else {
-            logger.info("Fail to create index [{}]", indexName);
+            logger.info("Fail to create INDEX [{}]", indexName);
         }
     }
 

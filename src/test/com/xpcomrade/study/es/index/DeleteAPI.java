@@ -27,7 +27,7 @@ public class DeleteAPI extends AbstractBaseTest {
 
     @Test
     public void deleteIndex (){
-        String indexName = "hxjbapilog";
+        String indexName = "hxjblog";
         DeleteIndexResponse dResponse = client.admin().indices().prepareDelete(indexName).execute().actionGet();
         if (dResponse.isAcknowledged()) {
             System.out.println("delete index "+indexName+"  successfully!");

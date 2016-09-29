@@ -16,10 +16,12 @@ public class ElasticsearchConfig {
 
     private TransportClient client;
 
-    /*private String clusterNodes = "192.168.9.96:9300";
-    private String clusterName = "my-es-cluster";*/
-    private String clusterNodes = "172.16.1.38:9300";
-    private String clusterName = "es_cluster";
+    private String clusterNodes = "192.168.9.96:9300";
+    private String clusterName = "my-es-cluster";
+
+   /* private String clusterNodes = "172.16.1.38:9300";
+    private String clusterName = "es_cluster";*/
+
     private Boolean clientTransportSniff = true;
     private Boolean clientIgnoreClusterName = Boolean.FALSE;
     private String clientPingTimeout = "5s";

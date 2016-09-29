@@ -2,7 +2,6 @@ package com.xpcomrade.study.es;
 
 import org.elasticsearch.action.bulk.BulkProcessor;
 import org.elasticsearch.action.bulk.BulkRequest;
-import org.elasticsearch.action.bulk.BulkRequestBuilder;
 import org.elasticsearch.action.bulk.BulkResponse;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.client.transport.TransportClient;
@@ -22,8 +21,8 @@ public final class IndexWriter {
 
     private static TransportClient client;
 
-    static final String index = "hmuserlog_20160928";
-    static final String type = "apilog";
+    static final String INDEX = "hmuserlog_20160928";
+    static final String TYPE = "apilog";
 
     private IndexWriter(){
 
@@ -43,7 +42,12 @@ public final class IndexWriter {
         }
     }
 
-    public static void submit(List<Map<String, Object>> resultList) {
+    public static void submit(List<Map<String, Object>> resultList, String index, String type) {
+
+        if (null == index || null == type) {
+            index = INDEX;
+            type = TYPE;
+        }
 
         BulkProcessor processor = BulkProcessor.builder(client, new BulkProcessor.Listener() {
             @Override
