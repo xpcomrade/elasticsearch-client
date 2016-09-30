@@ -1,11 +1,14 @@
 package com.xpcomrade.study.es;
 
+import org.apache.ibatis.io.Resources;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.elasticsearch.plugin.deletebyquery.DeleteByQueryPlugin;
 
+import java.io.IOException;
 import java.net.InetAddress;
+import java.util.Properties;
 
 /**
  * Created by xpcomrade on 2016/9/22.
@@ -16,18 +19,19 @@ public class ElasticsearchConfig {
 
     private TransportClient client;
 
-    private String clusterNodes = "192.168.9.96:9300";
-    private String clusterName = "my-es-cluster";
-
-   /* private String clusterNodes = "172.16.1.38:9300";
-    private String clusterName = "es_cluster";*/
-
-    private Boolean clientTransportSniff = true;
-    private Boolean clientIgnoreClusterName = Boolean.FALSE;
-    private String clientPingTimeout = "5s";
-    private String clientNodesSamplerInterval = "5s";
-
     public static final String COLON = ":";
+
+    public static final String COMMA = ",";
+
+    static Properties prop;
+
+    static {
+        try {
+            prop = Resources.getResourceAsProperties("config/es.properties");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public TransportClient client() throws Exception {
         if (null == client) {
@@ -38,24 +42,32 @@ public class ElasticsearchConfig {
     }
 
     private synchronized void buildlClient() throws Exception {
+
         client = TransportClient
                 .builder()
                 .settings(settings())
                 .addPlugin(DeleteByQueryPlugin.class)
                 .build();
 
-        String hostName = clusterNodes.split(COLON)[0];
-        String port = clusterNodes.split(COLON)[1];
-        client.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(hostName), Integer.valueOf(port)));
+        String[] clusterNodes = prop.getProperty("es.cluster.nodes").split(COMMA);
+        if (null == clusterNodes || 0 == clusterNodes.length) {
+            throw new NullPointerException("es nodes is null ");
+        }
+
+        for (String node : clusterNodes) {
+            String hostName = node.split(COLON)[0];
+            String port = node.split(COLON)[1];
+            client.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(hostName), Integer.valueOf(port)));
+        }
     }
 
     private Settings settings() {
         return Settings.settingsBuilder()
-                .put("cluster.name", clusterName)
-                .put("client.transport.sniff", clientTransportSniff)
-                .put("client.transport.ignore_cluster_name", clientIgnoreClusterName)
-                .put("client.transport.ping_timeout", clientPingTimeout)
-                .put("client.transport.nodes_sampler_interval", clientNodesSamplerInterval)
+                .put("cluster.name", prop.getProperty("es.cluster.name"))
+                .put("client.transport.sniff", Boolean.valueOf(prop.getProperty("es.client.transport.sniff")))
+                .put("client.transport.ignore_cluster_name", Boolean.valueOf(prop.getProperty("es.client.transport.ignore_cluster_name")))
+                .put("client.transport.ping_timeout", prop.getProperty("es.client.transport.ping_timeout"))
+                .put("client.transport.nodes_sampler_interval", prop.getProperty("es.client.transport.nodes_sampler_interval"))
                 .build();
     }
 
