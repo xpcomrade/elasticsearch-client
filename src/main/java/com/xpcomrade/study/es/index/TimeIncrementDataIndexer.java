@@ -26,9 +26,6 @@ public class TimeIncrementDataIndexer implements Indexer {
         while(true) {
             Date currentDate = new Date();
             Date previousDate = new Date(readLastIndexTime());
-
-            logger.info("索引开始:{}", currentDate.toLocaleString());
-
             Integer totalCount = DataLoader.queryTimingIndexerLogsCount(previousDate);
             if (null == totalCount || 0 == totalCount) {
                 logger.error("DataSet empty");
@@ -37,8 +34,6 @@ public class TimeIncrementDataIndexer implements Indexer {
 
             int pageSize = 10000;
             int totalPage = totalCount % pageSize == 0 ? totalCount / pageSize : totalCount / pageSize + 1;
-            logger.info("总共:{}页，条数:{}", totalPage, totalCount);
-
             int topage = 1;
             List<Map<String, Object>> resultList = null;
             while (totalPage > 0) {
@@ -46,14 +41,14 @@ public class TimeIncrementDataIndexer implements Indexer {
                 resultList = DataLoader.queryTimingIndexerData(previousDate, offset, pageSize);
 
                 IndexWriter.submit(resultList, null, null);
-                logger.info("第:{}页，索引完毕！", topage);
+                logger.info("第{}页，索引完毕！共{}页, 条数: {}", topage, totalPage, totalCount);
                 topage++;
                 totalPage--;
             }
 
             writeLastIndexTime(currentDate.getTime());
             try {
-                Thread.sleep(1000);
+                Thread.sleep(30000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
