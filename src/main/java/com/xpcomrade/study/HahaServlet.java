@@ -1,6 +1,7 @@
 package com.xpcomrade.study;
 
 import com.xpcomrade.study.es.index.FullDataIndexer;
+import com.xpcomrade.study.es.index.TimeIncrementDataIndexer;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,9 +19,15 @@ public class HahaServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String method = request.getParameter("method");
+        if ("full".equals(method)) {
+            new FullDataIndexer().index();
+        } else if ("timing".equals(method)) {
+            new TimeIncrementDataIndexer().index();
+        } else {
 
-        FullDataIndexer fullDataIndexer = new FullDataIndexer();
-        fullDataIndexer.index();
+        }
+
         try (OutputStream output = response.getOutputStream()) {
             output.write("finish".getBytes("utf-8"));
             output.flush();

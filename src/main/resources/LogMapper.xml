@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="LogMapper">
 
-
     <select id="queryAllData" resultType="Map">
         SELECT * FROM hxjb_user_log ORDER BY  create_time DESC  limit 100000
     </select>
@@ -16,6 +15,37 @@
     <select id="queryByPageCount" parameterType="Map"  resultType="Integer">
         SELECT COUNT(*) FROM hxjb_user_log
         WHERE  create_time <![CDATA[ <= ]]> '2016-09-28 14:20:10'
+    </select>
+
+
+
+    <select id="queryTimingIndexerLogs" resultType="Map" parameterType="Map">
+        SELECT * FROM hxjb_user_log
+        <where>
+            <choose>
+                <when test="lastDate != null">
+                    create_time >= #{lastDate}
+                </when>
+                <otherwise>
+                    create_time >= '2016-09-28 14:20:10'
+                </otherwise>
+            </choose>
+        </where>
+        limit #{offset},#{pagesize}
+    </select>
+
+    <select id="queryTimingIndexerLogsCount" resultType="Integer" parameterType="Map">
+        SELECT COUNT(*) FROM hxjb_user_log
+        <where>
+            <choose>
+                <when test="lastDate != null">
+                    create_time >= #{lastDate}
+                </when>
+                <otherwise>
+                    create_time >= '2016-09-28 14:20:10'
+                </otherwise>
+            </choose>
+        </where>
     </select>
 
 

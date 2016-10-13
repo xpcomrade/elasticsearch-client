@@ -15,6 +15,12 @@
         <junit.version>4.12</junit.version>
         <jcl-over-slf4j.version>1.7.7</jcl-over-slf4j.version>
         <logback-classic.version>1.1.7</logback-classic.version>
+        <es-rest.version>5.0.0-beta1</es-rest.version>
+        <mybatis.version>3.2.8</mybatis.version>
+        <tomcat-jdbc.version>7.0.23</tomcat-jdbc.version>
+        <mysql-connector-java.version>5.1.9</mysql-connector-java.version>
+        <servlet-api.version>2.5</servlet-api.version>
+        <jedis.version>2.6.2</jedis.version>
         <env.type>beta</env.type>
     </properties>
 
@@ -56,20 +62,20 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.9</version>
+            <version>${mysql-connector-java.version}</version>
         </dependency>
 
         <!-- tomcat pool -->
         <dependency>
             <groupId>org.apache.tomcat</groupId>
             <artifactId>tomcat-jdbc</artifactId>
-            <version>7.0.23</version>
+            <version>${tomcat-jdbc.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
-            <version>3.2.8</version>
+            <version>${mybatis.version}</version>
         </dependency>
 
         <dependency>
@@ -87,14 +93,20 @@
         <dependency>
             <groupId>org.elasticsearch.client</groupId>
             <artifactId>rest</artifactId>
-            <version>5.0.0-beta1</version>
+            <version>${es-rest.version}</version>
         </dependency>
 
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
+            <version>${servlet-api.version}</version>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>${jedis.version}</version>
         </dependency>
 
     </dependencies>
@@ -107,11 +119,17 @@
                 <directory>src/main/resources</directory>
                 <excludes>
                     <exclude>**/config/</exclude>
+                    <exclude>**/config-rootpath/</exclude>
                 </excludes>
             </resource>
             <resource>
                 <directory>src/main/resources/config/${env.type}</directory>
                 <targetPath>${project.build.outputDirectory}/config/</targetPath>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources/config-rootpath/${env.type}</directory>
+                <targetPath>${project.build.outputDirectory}/</targetPath>
                 <filtering>true</filtering>
             </resource>
         </resources>

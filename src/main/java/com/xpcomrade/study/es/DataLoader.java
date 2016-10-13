@@ -3,6 +3,7 @@ package com.xpcomrade.study.es;
 import com.xpcomrade.study.ds.DBUtils;
 import com.xpcomrade.study.ds.PageList;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,6 +47,23 @@ public class DataLoader {
         param.put("offset", offset);
         param.put("pagesize", pageSize);
         List<Map<String, Object>> resultList = DBUtils.selectList("LogMapper.queryByPage", param);
+        handlerData(resultList);
+
+        return resultList;
+    }
+
+    public static Integer queryTimingIndexerLogsCount(Date lastDate){
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("lastDate", lastDate);
+        return DBUtils.selectOne("LogMapper.queryTimingIndexerLogsCount", param);
+    }
+
+    public static List<Map<String, Object>> queryTimingIndexerData(Date lastDate, int offset, int pageSize){
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("lastDate", lastDate);
+        params.put("offset", offset);
+        params.put("pagesize", pageSize);
+        List<Map<String, Object>> resultList = DBUtils.selectList("LogMapper.queryTimingIndexerLogs", params);
         handlerData(resultList);
 
         return resultList;
