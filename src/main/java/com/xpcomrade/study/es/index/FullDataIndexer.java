@@ -31,8 +31,6 @@ public class FullDataIndexer implements Indexer {
 
         int pageSize = 10000;
         int totalPage = totalCount % pageSize == 0 ? totalCount / pageSize : totalCount / pageSize + 1;
-        logger.info("总共:{}页，条数:{}", totalPage, totalCount);
-
         int topage = 1;
         List<Map<String, Object>> resultList = null;
         while (totalPage >0) {
@@ -40,7 +38,7 @@ public class FullDataIndexer implements Indexer {
             resultList = DataLoader.queryList(offset, pageSize);
 
             IndexWriter.submit(resultList, "hxjblog", "log");
-            logger.info("第:{}页，索引完毕！", topage);
+            logger.info("第{}页，索引完毕！共{}页, 条数: {}", topage, totalPage, totalCount);
             topage++;
             totalPage--;
         }
