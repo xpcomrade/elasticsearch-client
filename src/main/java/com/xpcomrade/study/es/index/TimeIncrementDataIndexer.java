@@ -24,32 +24,33 @@ public class TimeIncrementDataIndexer implements Indexer {
     @Override
     public void index() {
         while(true) {
-            Date currentDate = new Date();
-            Date previousDate = new Date(readLastIndexTime());
-            Integer totalCount = DataLoader.queryTimingIndexerLogsCount(previousDate);
-            if (null == totalCount || 0 == totalCount) {
-                logger.error("DataSet empty");
-                continue;
-            }
-
-            int pageSize = 10000;
-            int totalPage = totalCount % pageSize == 0 ? totalCount / pageSize : totalCount / pageSize + 1;
-            int topage = 1;
-            List<Map<String, Object>> resultList = null;
-            while (totalPage > 0) {
-                int offset = PageUtil.getOffset(topage, pageSize);
-                resultList = DataLoader.queryTimingIndexerData(previousDate, offset, pageSize);
-
-                IndexWriter.submit(resultList, null, null);
-                logger.info("第{}页，索引完毕！共{}页, 条数: {}", topage, totalPage, totalCount);
-                topage++;
-                totalPage--;
-            }
-
-            writeLastIndexTime(currentDate.getTime());
             try {
+                Date currentDate = new Date();
+                Date previousDate = new Date(readLastIndexTime());
+                Integer totalCount = DataLoader.queryTimingIndexerLogsCount(previousDate);
+                if (null == totalCount || 0 == totalCount) {
+                    logger.error("DataSet empty");
+                    continue;
+                }
+
+                int pageSize = 10000;
+                int totalPage = totalCount % pageSize == 0 ? totalCount / pageSize : totalCount / pageSize + 1;
+                int topage = 1;
+                List<Map<String, Object>> resultList = null;
+                while (totalPage > 0) {
+                    int offset = PageUtil.getOffset(topage, pageSize);
+                    resultList = DataLoader.queryTimingIndexerData(previousDate, offset, pageSize);
+
+                    IndexWriter.submit(resultList, null, null);
+                    logger.info("第{}页，索引完毕！共{}页, 条数: {}", topage, totalPage, totalCount);
+                    topage++;
+                    totalPage--;
+                }
+
+                writeLastIndexTime(currentDate.getTime());
+
                 Thread.sleep(30000);
-            } catch (InterruptedException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

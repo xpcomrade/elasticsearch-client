@@ -3,6 +3,7 @@ package com.xpcomrade.study;
 import com.xpcomrade.study.es.index.FullDataIndexer;
 import com.xpcomrade.study.es.index.TimeIncrementDataIndexer;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,8 +23,6 @@ public class HahaServlet extends HttpServlet {
         String method = request.getParameter("method");
         if ("full".equals(method)) {
             new FullDataIndexer().index();
-        } else if ("timing".equals(method)) {
-            new TimeIncrementDataIndexer().index();
         } else {
 
         }
@@ -32,5 +31,12 @@ public class HahaServlet extends HttpServlet {
             output.write("finish".getBytes("utf-8"));
             output.flush();
         }
+    }
+
+
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        new TimeIncrementDataIndexer().index();
+        super.init(config);
     }
 }
