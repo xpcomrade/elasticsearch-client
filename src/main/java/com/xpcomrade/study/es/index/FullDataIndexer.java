@@ -1,4 +1,4 @@
-package com.xpcomrade.study.es.api;
+package com.xpcomrade.study.es.index;
 
 import com.xpcomrade.study.ds.PageUtil;
 import com.xpcomrade.study.es.DataLoader;

@@ -1,7 +1,7 @@
 package com.xpcomrade.study;
 
-import com.xpcomrade.study.es.api.FullDataIndexer;
-import com.xpcomrade.study.es.api.TimeIncrementDataIndexer;
+import com.xpcomrade.study.es.index.FullDataIndexer;
+import com.xpcomrade.study.es.index.TimeIncrementDataIndexer;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
