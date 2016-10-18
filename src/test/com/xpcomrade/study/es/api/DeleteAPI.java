@@ -1,4 +1,4 @@
-package com.xpcomrade.study.es.index;
+package com.xpcomrade.study.es.api;
 
 import org.elasticsearch.action.admin.indices.delete.DeleteIndexResponse;
 import org.elasticsearch.action.delete.DeleteResponse;
@@ -30,9 +30,9 @@ public class DeleteAPI extends AbstractBaseTest {
         String indexName = "hxjblog";
         DeleteIndexResponse dResponse = client.admin().indices().prepareDelete(indexName).execute().actionGet();
         if (dResponse.isAcknowledged()) {
-            System.out.println("delete index "+indexName+"  successfully!");
+            System.out.println("delete api "+indexName+"  successfully!");
         }else{
-            System.out.println("Fail to delete index "+indexName);
+            System.out.println("Fail to delete api "+indexName);
         }
     }
 

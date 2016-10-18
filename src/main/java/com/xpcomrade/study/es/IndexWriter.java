@@ -57,12 +57,12 @@ public final class IndexWriter {
 
             @Override
             public void afterBulk(long l, BulkRequest bulkRequest, BulkResponse bulkResponse) {
-                logger.info("afterBulk -> index finished, hasFailures:{}, Failure Message: {}", bulkResponse.hasFailures(), bulkResponse.buildFailureMessage());
+                logger.info("afterBulk -> api finished, hasFailures:{}, Failure Message: {}", bulkResponse.hasFailures(), bulkResponse.buildFailureMessage());
             }
 
             @Override
             public void afterBulk(long l, BulkRequest bulkRequest, Throwable throwable) {
-                logger.error("afterBulk With throwable -> index cause an exception, {}", throwable);
+                logger.error("afterBulk With throwable -> api cause an exception, {}", throwable);
             }
         }).build();
 

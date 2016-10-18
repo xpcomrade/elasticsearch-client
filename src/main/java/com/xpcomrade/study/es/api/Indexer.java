@@ -1,4 +1,4 @@
-package com.xpcomrade.study.es.index;
+package com.xpcomrade.study.es.api;
 
 /**
  * Created by xpcomrade on 2016/9/23.

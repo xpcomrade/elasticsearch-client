@@ -1,4 +1,4 @@
-package com.xpcomrade.study.es.index;
+package com.xpcomrade.study.es.api;
 
 import com.xpcomrade.study.es.ESClientUtil;
 import org.junit.Test;

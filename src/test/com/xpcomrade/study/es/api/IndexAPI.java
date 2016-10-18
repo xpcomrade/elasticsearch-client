@@ -1,4 +1,4 @@
-package com.xpcomrade.study.es.index;
+package com.xpcomrade.study.es.api;
 
 import org.elasticsearch.action.index.IndexResponse;
 import org.junit.Test;
@@ -31,7 +31,7 @@ public class IndexAPI extends AbstractBaseTest {
         String _type = response.getType();
         // Document ID (generated or not)
         String _id = response.getId();
-        // Version (if it's the first time you index this document, you will get: 1)
+        // Version (if it's the first time you api this document, you will get: 1)
         long _version = response.getVersion();
         // isCreated() is true if the document is a new one, false if it has been updated
         boolean created = response.isCreated();

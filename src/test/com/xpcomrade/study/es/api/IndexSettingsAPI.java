@@ -1,6 +1,5 @@
-package com.xpcomrade.study.es.index;
+package com.xpcomrade.study.es.api;
 
-import org.elasticsearch.action.admin.indices.mapping.put.PutMappingRequest;
 import org.elasticsearch.action.admin.indices.mapping.put.PutMappingResponse;
 import org.junit.Test;
 
@@ -24,23 +23,23 @@ public class IndexSettingsAPI extends AbstractBaseTest {
                 "          },\n" +
                 "          \"action\": {\n" +
                 "            \"type\": \"string\",\n" +
-                "            \"index\": \"not_analyzed\"\n" +
+                "            \"api\": \"not_analyzed\"\n" +
                 "          },\n" +
                 "          \"app_name\": {\n" +
                 "            \"type\": \"string\",\n" +
-                "            \"index\": \"not_analyzed\"\n" +
+                "            \"api\": \"not_analyzed\"\n" +
                 "          },\n" +
                 "          \"app_version\": {\n" +
                 "            \"type\": \"string\",\n" +
-                "            \"index\": \"not_analyzed\"\n" +
+                "            \"api\": \"not_analyzed\"\n" +
                 "          },\n" +
                 "          \"appid\": {\n" +
                 "            \"type\": \"string\",\n" +
-                "            \"index\": \"not_analyzed\"\n" +
+                "            \"api\": \"not_analyzed\"\n" +
                 "          },\n" +
                 "          \"channel\": {\n" +
                 "            \"type\": \"string\",\n" +
-                "            \"index\": \"not_analyzed\"\n" +
+                "            \"api\": \"not_analyzed\"\n" +
                 "          },\n" +
                 "          \"create_time\": {\n" +
                 "            \"type\": \"date\",\n" +
@@ -48,7 +47,7 @@ public class IndexSettingsAPI extends AbstractBaseTest {
                 "          },\n" +
                 "          \"device_type\": {\n" +
                 "            \"type\": \"string\",\n" +
-                "            \"index\": \"not_analyzed\"\n" +
+                "            \"api\": \"not_analyzed\"\n" +
                 "          },\n" +
                 "          \"gps_mapid\": {\n" +
                 "            \"type\": \"long\"\n" +
@@ -64,50 +63,50 @@ public class IndexSettingsAPI extends AbstractBaseTest {
                 "          },\n" +
                 "          \"mac_address\": {\n" +
                 "            \"type\": \"string\",\n" +
-                "            \"index\": \"not_analyzed\"\n" +
+                "            \"api\": \"not_analyzed\"\n" +
                 "          },\n" +
                 "          \"mid\": {\n" +
                 "            \"type\": \"long\"\n" +
                 "          },\n" +
                 "          \"net_type\": {\n" +
                 "            \"type\": \"string\",\n" +
-                "            \"index\": \"not_analyzed\"\n" +
+                "            \"api\": \"not_analyzed\"\n" +
                 "          },\n" +
                 "          \"parameter_infos\": {\n" +
                 "            \"type\": \"string\",\n" +
-                "            \"index\": \"analyzed\"\n" +
+                "            \"api\": \"analyzed\"\n" +
                 "          },\n" +
                 "          \"primary_key\": {\n" +
                 "            \"type\": \"string\",\n" +
-                "            \"index\": \"not_analyzed\"\n" +
+                "            \"api\": \"not_analyzed\"\n" +
                 "          },\n" +
                 "          \"request_headers\": {\n" +
                 "            \"type\": \"string\",\n" +
-                "            \"index\": \"analyzed\"\n" +
+                "            \"api\": \"analyzed\"\n" +
                 "          },\n" +
                 "          \"server_ip\": {\n" +
                 "            \"type\": \"string\",\n" +
-                "            \"index\": \"not_analyzed\"\n" +
+                "            \"api\": \"not_analyzed\"\n" +
                 "          },\n" +
                 "          \"sys\": {\n" +
                 "            \"type\": \"string\",\n" +
-                "            \"index\": \"not_analyzed\"\n" +
+                "            \"api\": \"not_analyzed\"\n" +
                 "          },\n" +
                 "          \"sys_version\": {\n" +
                 "            \"type\": \"string\",\n" +
-                "            \"index\": \"not_analyzed\"\n" +
+                "            \"api\": \"not_analyzed\"\n" +
                 "          },\n" +
                 "          \"user_ip\": {\n" +
                 "            \"type\": \"string\",\n" +
-                "            \"index\": \"not_analyzed\"\n" +
+                "            \"api\": \"not_analyzed\"\n" +
                 "          },\n" +
                 "          \"userid\": {\n" +
                 "            \"type\": \"string\",\n" +
-                "            \"index\": \"not_analyzed\"\n" +
+                "            \"api\": \"not_analyzed\"\n" +
                 "          },\n" +
                 "          \"version\": {\n" +
                 "            \"type\": \"string\",\n" +
-                "            \"index\": \"not_analyzed\"\n" +
+                "            \"api\": \"not_analyzed\"\n" +
                 "          }\n" +
                 "        }\n" +
                 "      }\n" +

@@ -50,23 +50,23 @@ public class RestClientApiTest extends RestClientInit {
                         "    },\n" +
                         "    \"action\": {\n" +
                         "      \"type\": \"string\",\n" +
-                        "      \"index\": \"not_analyzed\"\n" +
+                        "      \"api\": \"not_analyzed\"\n" +
                         "    },\n" +
                         "    \"app_name\": {\n" +
                         "      \"type\": \"string\",\n" +
-                        "      \"index\": \"not_analyzed\"\n" +
+                        "      \"api\": \"not_analyzed\"\n" +
                         "    },\n" +
                         "    \"app_version\": {\n" +
                         "      \"type\": \"string\",\n" +
-                        "      \"index\": \"not_analyzed\"\n" +
+                        "      \"api\": \"not_analyzed\"\n" +
                         "    },\n" +
                         "    \"appid\": {\n" +
                         "      \"type\": \"string\",\n" +
-                        "      \"index\": \"not_analyzed\"\n" +
+                        "      \"api\": \"not_analyzed\"\n" +
                         "    },\n" +
                         "    \"channel\": {\n" +
                         "      \"type\": \"string\",\n" +
-                        "      \"index\": \"not_analyzed\"\n" +
+                        "      \"api\": \"not_analyzed\"\n" +
                         "    },\n" +
                         "    \"create_time\": {\n" +
                         "      \"type\": \"date\",\n" +
@@ -74,7 +74,7 @@ public class RestClientApiTest extends RestClientInit {
                         "    },\n" +
                         "    \"device_type\": {\n" +
                         "      \"type\": \"string\",\n" +
-                        "      \"index\": \"not_analyzed\"\n" +
+                        "      \"api\": \"not_analyzed\"\n" +
                         "    },\n" +
                         "    \"gps_mapid\": {\n" +
                         "      \"type\": \"long\"\n" +
@@ -90,50 +90,50 @@ public class RestClientApiTest extends RestClientInit {
                         "    },\n" +
                         "    \"mac_address\": {\n" +
                         "      \"type\": \"string\",\n" +
-                        "      \"index\": \"not_analyzed\"\n" +
+                        "      \"api\": \"not_analyzed\"\n" +
                         "    },\n" +
                         "    \"mid\": {\n" +
                         "      \"type\": \"long\"\n" +
                         "    },\n" +
                         "    \"net_type\": {\n" +
                         "      \"type\": \"string\",\n" +
-                        "      \"index\": \"not_analyzed\"\n" +
+                        "      \"api\": \"not_analyzed\"\n" +
                         "    },\n" +
                         "    \"parameter_infos\": {\n" +
                         "      \"type\": \"string\",\n" +
-                        "      \"index\": \"analyzed\"\n" +
+                        "      \"api\": \"analyzed\"\n" +
                         "    },\n" +
                         "    \"primary_key\": {\n" +
                         "      \"type\": \"string\",\n" +
-                        "      \"index\": \"not_analyzed\"\n" +
+                        "      \"api\": \"not_analyzed\"\n" +
                         "    },\n" +
                         "    \"request_headers\": {\n" +
                         "      \"type\": \"string\",\n" +
-                        "      \"index\": \"analyzed\"\n" +
+                        "      \"api\": \"analyzed\"\n" +
                         "    },\n" +
                         "    \"server_ip\": {\n" +
                         "      \"type\": \"string\",\n" +
-                        "      \"index\": \"not_analyzed\"\n" +
+                        "      \"api\": \"not_analyzed\"\n" +
                         "    },\n" +
                         "    \"sys\": {\n" +
                         "      \"type\": \"string\",\n" +
-                        "      \"index\": \"not_analyzed\"\n" +
+                        "      \"api\": \"not_analyzed\"\n" +
                         "    },\n" +
                         "    \"sys_version\": {\n" +
                         "      \"type\": \"string\",\n" +
-                        "      \"index\": \"not_analyzed\"\n" +
+                        "      \"api\": \"not_analyzed\"\n" +
                         "    },\n" +
                         "    \"user_ip\": {\n" +
                         "      \"type\": \"string\",\n" +
-                        "      \"index\": \"not_analyzed\"\n" +
+                        "      \"api\": \"not_analyzed\"\n" +
                         "    },\n" +
                         "    \"userid\": {\n" +
                         "      \"type\": \"string\",\n" +
-                        "      \"index\": \"not_analyzed\"\n" +
+                        "      \"api\": \"not_analyzed\"\n" +
                         "    },\n" +
                         "    \"version\": {\n" +
                         "      \"type\": \"string\",\n" +
-                        "      \"index\": \"not_analyzed\"\n" +
+                        "      \"api\": \"not_analyzed\"\n" +
                         "    }\n" +
                         "  }\n" +
                         "}", ContentType.APPLICATION_JSON);

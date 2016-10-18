@@ -1,4 +1,4 @@
-package com.xpcomrade.study.es.index;
+package com.xpcomrade.study.es.api;
 
 import org.elasticsearch.action.update.UpdateResponse;
 import org.elasticsearch.index.get.GetResult;

@@ -1,7 +1,7 @@
 package com.xpcomrade.study;
 
-import com.xpcomrade.study.es.index.FullDataIndexer;
-import com.xpcomrade.study.es.index.TimeIncrementDataIndexer;
+import com.xpcomrade.study.es.api.FullDataIndexer;
+import com.xpcomrade.study.es.api.TimeIncrementDataIndexer;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -32,6 +32,8 @@ public class HahaServlet extends HttpServlet {
             output.flush();
         }
     }
+
+
 
 
     @Override
